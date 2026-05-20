@@ -1,0 +1,239 @@
+<script>
+
+const quizData = [
+
+{
+    image: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200'><circle cx='80' cy='100' r='40' fill='blue'/><circle cx='220' cy='100' r='40' fill='green'/><text x='40' y='105' font-size='20' fill='white'>Na</text><text x='190' y='105' font-size='20' fill='white'>Cl</text><text x='120' y='40' font-size='18'>이온결합</text></svg>",
+    answer:"이온결합",
+    explanation:"Na와 Cl은 전자를 주고받아 결합하므로 이온결합입니다."
+},
+
+{
+    image: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200'><circle cx='80' cy='100' r='35' fill='skyblue'/><circle cx='150' cy='100' r='35' fill='skyblue'/><circle cx='220' cy='100' r='35' fill='skyblue'/><text x='60' y='105' font-size='18'>H</text><text x='130' y='105' font-size='18'>O</text><text x='200' y='105' font-size='18'>H</text><text x='95' y='40' font-size='16'>공유결합 (H₂O)</text></svg>",
+    answer:"공유결합",
+    explanation:"물(H₂O)은 전자를 함께 공유하므로 공유결합입니다."
+},
+
+{
+    image: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200'><circle cx='150' cy='100' r='40' fill='gray'/><text x='140' y='105' font-size='18' fill='white'>C</text><text x='100' y='60' font-size='14'>CH₄ 공유결합</text><circle cx='80' cy='60' r='25' fill='lightblue'/><circle cx='220' cy='60' r='25' fill='lightblue'/><circle cx='80' cy='140' r='25' fill='lightblue'/><circle cx='220' cy='140' r='25' fill='lightblue'/></svg>",
+    answer:"공유결합",
+    explanation:"메테인(CH₄)은 탄소와 수소가 전자를 공유하는 공유결합입니다."
+},
+
+{
+    image: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200'><circle cx='100' cy='100' r='40' fill='orange'/><circle cx='200' cy='100' r='40' fill='green'/><text x='85' y='105' font-size='18'>Li</text><text x='185' y='105' font-size='18'>F</text><text x='70' y='40' font-size='16'>이온결합</text></svg>",
+    answer:"이온결합",
+    explanation:"리튬과 플루오린은 전자를 주고받는 이온결합입니다."
+},
+
+{
+    image: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200'><circle cx='150' cy='100' r='40' fill='blue'/><circle cx='220' cy='100' r='40' fill='red'/><text x='140' y='105' font-size='18' fill='white'>Mg</text><text x='205' y='105' font-size='18' fill='white'>O</text><text x='80' y='40' font-size='16'>MgO 이온결합</text></svg>",
+    answer:"이온결합",
+    explanation:"MgO는 마그네슘과 산소가 전자를 주고받는 이온결합입니다."
+},
+
+{
+    image: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200'><circle cx='120' cy='100' r='35' fill='black'/><circle cx='180' cy='100' r='35' fill='red'/><text x='110' y='105' font-size='18' fill='white'>C</text><text x='170' y='105' font-size='18' fill='white'>O</text><text x='80' y='40' font-size='16'>CO₂ 공유결합</text></svg>",
+    answer:"공유결합",
+    explanation:"CO₂는 탄소와 산소가 전자를 공유하는 공유결합입니다."
+},
+
+{
+    image: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200'><circle cx='100' cy='100' r='40' fill='purple'/><circle cx='200' cy='100' r='40' fill='green'/><text x='85' y='105' font-size='18' fill='white'>K</text><text x='185' y='105' font-size='18' fill='white'>Br</text><text x='70' y='40' font-size='16'>KBr 이온결합</text></svg>",
+    answer:"이온결합",
+    explanation:"KBr은 칼륨과 브로민이 전자를 주고받아 결합합니다."
+},
+
+{
+    image: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200'><circle cx='120' cy='100' r='35' fill='blue'/><circle cx='180' cy='100' r='35' fill='blue'/><text x='110' y='105' font-size='18' fill='white'>N</text><text x='170' y='105' font-size='18' fill='white'>H</text><text x='80' y='40' font-size='16'>NH₃ 공유결합</text></svg>",
+    answer:"공유결합",
+    explanation:"NH₃는 질소와 수소가 전자를 공유하는 공유결합입니다."
+},
+
+{
+    image: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200'><circle cx='120' cy='100' r='40' fill='blue'/><circle cx='200' cy='100' r='40' fill='green'/><text x='110' y='105' font-size='18' fill='white'>Ca</text><text x='185' y='105' font-size='18' fill='white'>Cl</text><text x='70' y='40' font-size='16'>CaCl₂ 이온결합</text></svg>",
+    answer:"이온결합",
+    explanation:"CaCl₂는 칼슘과 염소 사이의 이온결합입니다."
+},
+
+{
+    image: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200'><circle cx='120' cy='100' r='35' fill='red'/><circle cx='180' cy='100' r='35' fill='red'/><text x='110' y='105' font-size='18' fill='white'>O</text><text x='170' y='105' font-size='18' fill='white'>O</text><text x='80' y='40' font-size='16'>O₂ 공유결합</text></svg>",
+    answer:"공유결합",
+    explanation:"O₂는 산소 원자끼리 전자를 공유하는 공유결합입니다."
+}
+
+]; // 중복된 ]; 부분 삭제 완료
+
+let currentQuiz = 0;
+let score = 0;
+
+let timeLeft = 90;
+let timer;
+
+function formatTime(seconds){
+
+    let min = Math.floor(seconds / 60);
+    let sec = seconds % 60;
+
+    if(sec < 10){
+        sec = "0" + sec;
+    }
+
+    return `${min}:${sec}`;
+}
+
+function loadQuiz(){
+
+    clearInterval(timer);
+
+    timeLeft = 90;
+
+    document.getElementById("time").innerText =
+        formatTime(timeLeft);
+
+    document.getElementById("bondImage").src =
+        quizData[currentQuiz].image;
+
+    document.getElementById("questionTitle").innerText =
+        `문제 ${currentQuiz + 1} / ${quizData.length}`;
+
+    document.getElementById("result").innerText = "";
+    document.getElementById("explanation").innerText = "";
+
+    timer = setInterval(() => {
+
+        timeLeft--;
+
+        document.getElementById("time").innerText =
+            formatTime(timeLeft);
+
+        if(timeLeft <= 0){
+
+            clearInterval(timer);
+
+            document.getElementById("result").innerHTML =
+                "⏰ 시간 초과!";
+
+            document.getElementById("explanation").innerHTML =
+                quizData[currentQuiz].explanation;
+
+            setTimeout(nextQuiz, 2500);
+        }
+
+    }, 1000);
+}
+
+function checkAnswer(userAnswer){
+
+    clearInterval(timer);
+
+    const correctAnswer = quizData[currentQuiz].answer;
+
+    if(userAnswer === correctAnswer){
+
+        score += 10;
+
+        document.getElementById("score").innerText = score;
+
+        document.getElementById("result").innerHTML =
+            "✅ 정답입니다! (+10점)";
+
+    }else{
+
+        document.getElementById("result").innerHTML =
+            "❌ 틀렸습니다!";
+    }
+
+    document.getElementById("explanation").innerHTML =
+        quizData[currentQuiz].explanation;
+
+    setTimeout(nextQuiz, 2500);
+}
+
+function nextQuiz(){
+
+    currentQuiz++;
+
+    if(currentQuiz < quizData.length){
+
+        loadQuiz();
+
+    }else{
+
+        endGame();
+    }
+}
+
+function endGame(){
+
+    document.querySelector(".quiz-box").innerHTML = `
+
+        <h2>🎉 퀴즈 종료!</h2>
+
+        <h3>최종 점수: ${score}점</h3>
+
+        <h3>총 문제 수: ${quizData.length}문제</h3>
+
+        <p>
+        ${
+            score >= 80
+            ? "🏆 완벽합니다!"
+            : score >= 50
+            ? "👍 잘했습니다!"
+            : "📚 조금 더 공부해봅시다!"
+        }
+        </p>
+
+        <button onclick="restartGame()">
+            다시하기
+        </button>
+    `;
+}
+
+function restartGame(){
+
+    currentQuiz = 0;
+    score = 0;
+
+    document.querySelector(".quiz-box").innerHTML = `
+
+        <div class="info">
+            <div>점수: <span id="score">0</span></div>
+
+            <div class="timer">
+                남은 시간: <span id="time">1:30</span>
+            </div>
+        </div>
+
+        <h2 id="questionTitle"></h2>
+
+        <img id="bondImage" src="" alt="결합 이미지">
+
+        <div>
+
+            <button class="ionic"
+                onclick="checkAnswer('이온결합')">
+
+                이온결합
+
+            </button>
+
+            <button class="covalent"
+                onclick="checkAnswer('공유결합')">
+
+                공유결합
+
+            </button>
+
+        </div>
+
+        <div id="result"></div>
+        <div id="explanation"></div>
+    `;
+
+    loadQuiz();
+}
+
+loadQuiz();
+
+</script>
